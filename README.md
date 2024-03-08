@@ -32,6 +32,15 @@ following `settings.py` instead:
     # Note: make sure to set the following environment variables:
     # AZURE_TENANT_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET
 
+The Azure, the default **FROM email** address is the Django setting:
+
+    SERVER_EMAIL = '...'
+
+Django also has a setting called `DEFAULT_FROM_EMAIL`. That setting is **ignored** when `SERVER_EMAIL` is defined. If you want `DEFAULT_FROM_EMAIL` to be used, then:
+
+    SERVER_EMAIL = None
+    DEFAULT_FROM_EMAIL = '...'
+
 Now, when you use `django.core.mail.send_mail`, Azure Communication Email
 service will send the messages by default.
 
